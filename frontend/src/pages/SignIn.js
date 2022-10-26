@@ -1,15 +1,13 @@
 import React from "react";
-import logo from "../Assets/vikrant.png"
+import { Link } from "react-router-dom";
+import logo from "../Assets/vikrant.png";
 function SignIn() {
   return (
     <div>
       <body class="flex h-screen bg-yellow-500">
         <div class="w-full max-w-xs m-auto bg-yellow-100 rounded p-5">
           <header>
-            <img
-              class="w-44 mx-auto mb-5"
-              src={logo}
-            />
+            <img class="w-44 mx-auto mb-5" src={logo} />
             <form>
               <div>
                 <label class="block mb-2 text-yellow-600" for="username">
@@ -32,10 +30,14 @@ function SignIn() {
                 />
               </div>
               <div>
-                <input
-                  class="w-full bg-yellow-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 mb-6 rounded"
-                  type="submit"
-                />
+                <Link to = "/home">
+                  <div
+                    class="w-full bg-yellow-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 mb-6 rounded text-center"
+                    type="submit"
+                  >
+                    Submit
+                  </div>
+                </Link>
               </div>
             </form>
           </header>

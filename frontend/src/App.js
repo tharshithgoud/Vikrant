@@ -10,6 +10,9 @@ import Settings from "./pages/Settings";
 import SignIn from "./pages/SignIn"
 import AddHoneypot from "./pages/AddHoneypot";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Ntpot from "./components/honeypot/Ntpot.js";
+import PredictCic from "./pages/predictcic";
+import Generate from "./pages/Generate";
 function App() {
   return (
     <Router>
@@ -25,8 +28,11 @@ function App() {
         <Route path="/signin" element={<SignIn />} />
         <Route path="/analyze-ml/predict" element={<SignIn />} />
         <Route path="/analyze-ml/generate" element={<SignIn />} />
-        <Route path="*" element={<Dashboard/>} />
+        <Route path="*" element={<SignIn />} />
         <Route path="/add" element={<AddHoneypot/>} />
+        <Route path="/ntpot" element={<Ntpot />} />
+        <Route path="/predict" element={<PredictCic />} />
+        <Route path="/generate" element={<Generate />} />
       </Routes>
     </Router>
   );

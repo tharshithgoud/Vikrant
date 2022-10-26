@@ -4,6 +4,8 @@ import DataTable from "react-data-table-component";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 import DatePicker from "../partials/actions/Datepicker"
+import flowfile from "../Assets/flowdatacs.csv"
+
 function FlowData() {
   const [columns, setColumns] = useState([]);
   const [data, setData] = useState([]);
@@ -48,6 +50,8 @@ function FlowData() {
 
     setData(list);
     setColumns(columns);
+    console.log(columns)
+    console.log(data)
   };
 
   // handle file upload

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import LineChart from "../../charts/LineChart01";
 
@@ -6,6 +7,7 @@ import LineChart from "../../charts/LineChart01";
 import { tailwindConfig, hexToRGB } from "../../utils/Utils";
 
 function DashboardCard01() {
+  const [count,setCount] = useState(44789)
   const chartData = {
     labels: [
       "12-01-2020",
@@ -62,7 +64,7 @@ function DashboardCard01() {
       <div className="px-5 pt-5">
         <h2 className="text-lg font-semibold text-slate-800 mb-2">Total Attacks</h2>
         <div className="flex items-start">
-          <div className="text-3xl font-bold text-slate-800 mr-2">114,681</div>
+          <div className="text-3xl font-bold text-slate-800 mr-2">44,789</div>
           <div className="text-sm font-semibold text-white px-1.5 bg-green-500 rounded-full">
             +12%
           </div>

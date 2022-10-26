@@ -35,7 +35,7 @@ class Maps extends Component {
                 stroke={false}
               >
                 <Tooltip direction="right" offset={[-8, -2]} opacity={1}>
-                  <span>{city["name"] + ": " + "Population" + " " + city["population"]}</span>
+                  <span>{city["name"] + ": " + "Count" + " " + city["population"]}</span>
                 </Tooltip>
               </CircleMarker>
             );

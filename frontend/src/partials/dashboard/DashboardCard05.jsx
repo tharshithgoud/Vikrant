@@ -19,7 +19,7 @@ function DashboardCard05() {
   
   // Dummy data to be looped
   const data = [
-    5,8,2,3,1,8,9,7,6,7,0,5,5,8,2,5,8,6,9,7,12,9,2,7
+    0,0,0,3,1,0,9,0,6,7,0,5,5,0,2,5,0,6,0,0,0,0,2,7
   ];
 
   const [slicedData, setSlicedData] = useState(data.slice(0, range));

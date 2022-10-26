@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import Header from "../components/Header";
 import SideBar from "../components/SideBar";
 const Console = () => {
@@ -33,6 +34,7 @@ const Console = () => {
       <SideBar />
       <div className="content-container">
         <Header />
+
         <Terminal theme={themeVars} setTheme={setTheme} />
       </div>
     </div>
@@ -47,7 +49,12 @@ const Terminal = ({ theme, setTheme }) => {
     setMaximized(!maximized);
     document.querySelector("#field").focus();
   };
-
+  function popup() {
+    window.open(
+      "http://139.84.133.239:4200",
+      "scrollbars=yes,menubar=no,height=650,width=970,left=0,top=0,screenX=0,screenY=0,resizable=no,toolbar=no,location=no,status=no"
+    );
+  }
   return (
     <div
       className="pt-16"
@@ -60,7 +67,8 @@ const Terminal = ({ theme, setTheme }) => {
     >
       <div id="window" style={theme.window}>
         <button className="btn red" onClick={handleClose} />
-        <button id="useless-btn" className="btn yellow" />
+        <button id="useless-btn" className="btn yellow" onClick={popup} />
+
         <button className="btn green" onClick={handleMinMax} />
         <span id="title" style={{ color: theme.window.color }}>
           {title}
@@ -77,12 +85,12 @@ class Field extends React.Component {
       commandHistory: [],
       commandHistoryIndex: 0,
       fieldHistory: [
-        { text: "Ubuntu 20.04" },
+        { text: "Debian 11" },
         {
           text: "Status: Connected",
         },
         {
-          text: "IP: 192.168.1.5",
+          text: "IP: 134.84.133.239",
           hasBuffer: true,
         },
       ],
@@ -656,35 +664,27 @@ class Field extends React.Component {
           },
         ],
       }));
-    } else if(cmd==="ls"){
-        return this.setState((state) => ({
-            fieldHistory: [
-              ...state.fieldHistory,
-              {
-                text: [
-                  "snap vikrant"
-                ],
-                hasBuffer: true,
-              },
-            ],
-          }));
-
-    }
-     else if(cmd==="whoami"){
-        return this.setState((state) => ({
-            fieldHistory: [
-              ...state.fieldHistory,
-              {
-                text: [
-                  "root"
-                ],
-                hasBuffer: true,
-              },
-            ],
-          }));
-
-    }
-    else if (cmd === "project") {
+    } else if (cmd === "ls") {
+      return this.setState((state) => ({
+        fieldHistory: [
+          ...state.fieldHistory,
+          {
+            text: ["snap vikrant"],
+            hasBuffer: true,
+          },
+        ],
+      }));
+    } else if (cmd === "whoami") {
+      return this.setState((state) => ({
+        fieldHistory: [
+          ...state.fieldHistory,
+          {
+            text: ["root"],
+            hasBuffer: true,
+          },
+        ],
+      }));
+    } else if (cmd === "project") {
       if (params.length === 1) {
         const projects = [
           {
@@ -809,7 +809,7 @@ class Field extends React.Component {
 const Text = ({ input, isCommand, isError, hasBuffer }) => (
   <>
     <div>
-      {isCommand && <div id="query">root@ironlocalubuntu:~$</div>}
+      {isCommand && <div id="query">root@vultr:~$</div>}
       <span className={!isCommand && isError ? "error" : ""}>{input}</span>
     </div>
     {hasBuffer && <div></div>}
@@ -825,7 +825,7 @@ const MultiText = ({ input, isError, hasBuffer }) => (
 );
 const UserText = ({ input, theme }) => (
   <div>
-    <div id="query">root@ironlocalubuntu:~$</div>
+    <div id="query">root@vultr:~$</div>
     <span>{input}</span>
     <div id="cursor" style={theme}></div>
   </div>

@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "react-file-drop": "^3.1.6",
+    "sass": "^1.55.0",
+    "scss": "^0.2.4"
+  }
+}
