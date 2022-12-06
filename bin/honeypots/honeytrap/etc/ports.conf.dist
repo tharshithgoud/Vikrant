@@ -1,0 +1,43 @@
+/* 
+ * honeytrap 1.0 port configuration file template
+ * should be included in main configuration file
+ * (c) Tillmann Werner <tillmann.werner@gmx.de>
+ */
+
+portconf = {
+	/* ignore these ports */
+	ignore = {
+		protocol	= "tcp"
+		port		= ["25", "1433"]
+	}
+	/* process ports in normal mode */
+	normal = {
+		protocol	= ["tcp", "udp"]
+		port		= ["53"]
+	}
+	/* mirror ports back to the initiator */
+	mirror = {
+		protocol	= ["tcp"]
+		port		= ["23"]
+	}
+	/* proxy ports to a target */
+	proxy = {
+		/* names for proxy maps can be chosen from [a-zA-Z0-9-_] */
+		proxy-http = {
+			protocol	= ["tcp"]
+			port		= ["80", "8080"]
+
+			target_host	= "127.0.0.1"
+			target_protocol	= "tcp"
+			target_port	= "8080"
+		}
+		proxy-tftp = {
+			protocol	= ["udp"]
+			port		= ["69"]
+
+			target_host	= "tftp.localhost"
+			target_protocol	= "udp"
+			target_port	= "69"
+		}
+	}
+}

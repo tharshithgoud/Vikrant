@@ -1,0 +1,6 @@
+**__pycache__**
+*.py[ocd]
+*.pem
+.ropeproject
+venv
+.idea/

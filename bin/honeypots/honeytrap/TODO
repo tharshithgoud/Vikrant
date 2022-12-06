@@ -1,0 +1,5 @@
+-- Small Changes ------------------------------------------------------
+o  Do fallback to default interface already in ip guessing phase
+
+-- Future plans -------------------------------------------------------
+o  add ipfw connection monitors

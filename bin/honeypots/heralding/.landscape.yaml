@@ -1,0 +1,9 @@
+strictness: medium
+autodetect: yes
+
+ignore-paths:
+    - ez_setup.py
+
+pylint:
+  disable:
+    - W1202

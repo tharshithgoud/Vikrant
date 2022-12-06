@@ -1,0 +1,29 @@
+dist: xenial
+language: python
+python:
+- 3.6.3
+- 3.6.5
+- 3.6.7
+- 3.7.1
+- 3.7.2
+- 3.8.0
+before_install:
+- rvm install 2.2.5
+install:
+- pip3 install --upgrade setuptools
+- pip3 install coveralls
+script:
+- python3 setup.py test
+after_success:
+- coverage run --source=heralding setup.py -q nosetests
+- coveralls
+deploy:
+  provider: pypi
+  user: Johnny.Vestergaard
+  password:
+    secure: dJNWYkbaKTl6zCvtSq8YCNAJCnd+vs36/5dBojBqpf1xuUQgodPTBYJuiEJYODq4O7DIuepyo4K982gd6TnGRf5YaR+DdbFCD+mIt7WKRbuFm64Typwgcdw4kaqdwIMtDoTn4XZK3u5RHOuCs30+Ly8pSN+j19p/vqMqypVN6nNYcBp8eANmWjmAAijFSC58yqs+sD2SSadh2Z4GWb5c4+KwqakL3g1vY56po+QUNLBOgcJ/wXTZ9QJbjWh+i9K2vzQD8sun0W4Hh/ztQdLeCUEOrxZPiFu1nQSjVeV0OAj55/ihXC09zjSUmgNLi20J3KGQ4cM81eG22bQj9M39ROz+HiRjT3U0aIgo3HShBTQpRylKAEW+mHo7NrRtNIKoVLI8Mw3utovlnyZcG9NBV02RROKlzUqJ8XgDbXZz8/Yzxt7bvNl5f28z4gl1ozst+OYYkcpAdJGSGbLv73s7ZIILblU0M0ifSGMeTcNCccqDWhKknEh8ccIRSZRmeK5RIQdjGUVMLYnIoq7uqXIwqk8ilEoUxhWXUIqTcnymY5QjsR6b6T1groVSC16HIPYY/52ii/V5uZ3EoRLsQyDoeDojs5e50HSUx54OwRvm+y9himeI6G7CsUDS+lDtTJYvckeE2QDKQLAQcBH9HN1F8gkm+WIf1pimld4c8dKXTHQ=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: johnnykv/heralding
+    condition: "$TRAVIS_TAG =~ ^Release_[0-9]+[.][0-9]+[.][0-9]+"
