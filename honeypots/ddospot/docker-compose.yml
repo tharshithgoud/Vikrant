@@ -1,0 +1,16 @@
+version: "1"
+
+services:
+  ddospot:
+    build: .
+    container_name: vikrant-ddospot
+    restart: always
+    ports:
+      - "19:19/udp"
+      - "54:53/udp"
+      - "123:123/udp"
+      - "161:161/udp"
+      - "1900:1900/udp"
+    volumes:
+      - ../../data/ddospot:/root/ddospot/db
+

@@ -1,0 +1,14 @@
+version: "1"
+
+services:
+  adbhoney:
+    build: .
+    container_name: vikrant-ADBHoney
+    restart: always
+    read_only: true
+    ports:
+      - "5555:5555"
+    volumes:
+      - ../../data/adbhoney/logs:/root/ADBHoney/logs
+      - ../../data/adbhoney/downloads:/root/ADBHoney/dl
+

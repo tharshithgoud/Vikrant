@@ -1,0 +1,12 @@
+version: '1'
+
+services:
+  redishoneypot:
+    build: .
+    container_name: vikrant-redishoneypot
+    restart: always
+    ports:
+     - "6379:6379"   
+    read_only: true
+    volumes:
+     - ../../data/redishoneypot/log:/var/log/redishoneypot

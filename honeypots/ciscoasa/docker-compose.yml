@@ -1,0 +1,15 @@
+version: '1'
+
+services:
+  ciscoasa:
+    build: .
+    container_name: vikrant-ciscoasa
+    restart: always
+    read_only: true
+    tmpfs:
+     - /tmp/ciscoasa:uid=2000,gid=2000
+    ports:
+     - "5000:5000/udp"
+     - "8443:8443"
+    volumes:
+     - ../../data/ciscoasa/log:/var/log/ciscoasa

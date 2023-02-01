@@ -1,0 +1,18 @@
+version: '1'
+
+services:
+  log4pot:
+    build: .
+    container_name: vikrant-log4pot
+    restart: always
+    tmpfs:
+     - /tmp:uid=2000,gid=2000
+    ports:
+     - "80:8080"
+     - "443:8080"
+     - "8080:8080"
+  #   - "9200:8080"
+     - "25565:8080"
+    volumes:
+     - ../../data/log4pot/log:/var/log/log4pot/log
+     - ../../data/log4pot/payloads:/var/log/log4pot/payloads

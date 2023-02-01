@@ -1,0 +1,16 @@
+version: '1'
+
+services:
+  suricata:
+    build: .
+    container_name: vikrant-suricata
+    restart: always
+    environment:
+     - OINKCODE=OPEN
+    network_mode: "host"
+    cap_add:
+     - NET_ADMIN
+     - SYS_NICE
+     - NET_RAW
+    volumes:
+     - ../../data/suricata/log:/var/log/suricata

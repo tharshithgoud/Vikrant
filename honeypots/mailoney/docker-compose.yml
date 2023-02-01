@@ -1,0 +1,18 @@
+version: '1'
+
+services:
+  mailoney:
+    build: .
+    container_name: vikrant-mailoney
+    restart: always
+    environment:
+     - HPFEEDS_SERVER=
+     - HPFEEDS_IDENT=user
+     - HPFEEDS_SECRET=pass
+     - HPFEEDS_PORT=20000
+     - HPFEEDS_CHANNELPREFIX=prefix
+    ports:
+     - "25:25"
+    read_only: true
+    volumes:
+     - ../../data/mailoney/log:/opt/mailoney/logs

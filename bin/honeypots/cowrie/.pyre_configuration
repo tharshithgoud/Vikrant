@@ -1,9 +1,0 @@
-{
-  "source_directories": [
-    "src"
-  ],
-  "exclude": [
-    ".*/src/cowrie/output/.*"
-  ],
-  "workers": 4
-}
