@@ -98,4 +98,4 @@ RUN ARCH=$(arch) && \
 STOPSIGNAL SIGINT
 HEALTHCHECK CMD if [ $(ps -C mpv -p 1 -o %cpu | tail -n 1 | cut -f 1 -d ".") -gt 75 ]; then kill -2 1; else exit 0; fi
 USER dionaea:dionaea
-CMD ["/opt/dionaea/bin/dionaea", "-u", "dionaea", "-g", "dionaea", "-c", "/opt/dionaea/etc/dionaea/dionaea.cfg"]
+CMD ["/opt/dionaea/bin/dionaea", "-c", "/opt/dionaea/etc/dionaea/dionaea.cfg"]

@@ -1,7 +1,6 @@
-version: '1'
+version: '3.3'
 
 services:
-
   adbhoney:
     build: honeypots/adbhoney/.
     container_name: vikrant-ADBHoney
@@ -30,6 +29,7 @@ services:
     build: honeypots/cowrie/.
     container_name: vikrant-cowrie
     restart: always
+    read_only: true
     tmpfs:
      - /tmp/cowrie:uid=2000,gid=2000
      - /tmp/cowrie/data:uid=2000,gid=2000
@@ -103,6 +103,7 @@ services:
     build: honeypots/log4pot/.
     container_name: vikrant-log4pot
     restart: always
+    read_only: true
     tmpfs:
      - /tmp:uid=2000,gid=2000
     ports:

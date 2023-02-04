@@ -16,8 +16,6 @@ RUN apk -U --no-cache add \
     mkdir -p /opt/redishoneypot && \
     mv /opt/go/bin/RedisHoneyPot /opt/redishoneypot/ && \
     mv /root/dist/redis.conf /opt/redishoneypot && \
-    addgroup -g 2000 redishoneypot && \
-    adduser -S -s /bin/ash -u 2000 -D -g 2000 redishoneypot && \
     mkdir -p /var/log/redishoneypot && \
     apk del --purge build-base \
                     git \
@@ -29,5 +27,4 @@ RUN apk -U --no-cache add \
 	   /opt/redishoneypot/.git
 
 WORKDIR /opt/redishoneypot
-USER redishoneypot:redishoneypot
 CMD ./RedisHoneyPot > /var/log/redishoneypot/redishoneypot.log 2>&1

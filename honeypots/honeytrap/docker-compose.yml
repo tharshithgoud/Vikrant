@@ -10,7 +10,6 @@ services:
     network_mode: "host"
     cap_add:
      - NET_ADMIN
-    read_only: true
     volumes:
      - ../../data/honeytrap/attacks:/opt/honeytrap/var/attacks
      - ../../data/honeytrap/downloads:/opt/honeytrap/var/downloads

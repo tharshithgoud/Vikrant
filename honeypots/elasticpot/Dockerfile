@@ -33,8 +33,6 @@ RUN apk -U --no-cache add \
     git checkout d12649730d819bd78ea622361b6c65120173ad45 && \
     cp /root/dist/requirements.txt . && \
     pip3 install -r requirements.txt && \
-    addgroup -g 2000 elasticpot && \
-    adduser -S -H -s /bin/ash -u 2000 -D -g 2000 elasticpot && \
     mv /root/dist/honeypot.cfg /opt/elasticpot/etc/ && \
     apk del --purge build-base \
                     git \
@@ -46,6 +44,5 @@ RUN apk -U --no-cache add \
     rm -rf /var/cache/apk/* /opt/elasticpot/.git
 
 STOPSIGNAL SIGINT
-USER elasticpot:elasticpot
 WORKDIR /opt/elasticpot/
 CMD ["/usr/bin/python3","elasticpot.py"]

@@ -12,8 +12,6 @@ RUN apk --no-cache -U upgrade && \
 	    py3-pip \
             python3 \
             python3-dev && \
-    addgroup -g 2000 ciscoasa && \
-    adduser -S -s /bin/bash -u 2000 -D -g 2000 ciscoasa && \
     mkdir -p /opt/ && \
     cd /opt/ && \
     git clone https://github.com/cymmetria/ciscoasa_honeypot && \
@@ -22,7 +20,6 @@ RUN apk --no-cache -U upgrade && \
     sed -i "s/git+git/git+https/g" requirements.txt && \
     pip3 install --no-cache-dir -r requirements.txt && \
     cp /root/dist/asa_server.py /opt/ciscoasa_honeypot && \
-    chown -R ciscoasa:ciscoasa /opt/ciscoasa_honeypot && \
     apk del --purge build-base \
                     git \
                     libffi-dev \
@@ -35,5 +32,4 @@ RUN apk --no-cache -U upgrade && \
 
 STOPSIGNAL SIGINT
 WORKDIR /tmp/ciscoasa/
-USER ciscoasa:ciscoasa
 CMD cp -R /opt/ciscoasa_honeypot/* /tmp/ciscoasa && exec python3 asa_server.py --ike-port 5000 --enable_ssl --port 8443 --verbose >> /var/log/ciscoasa/ciscoasa.log 2>&1
