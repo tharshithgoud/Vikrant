@@ -1,4 +1,4 @@
-version: '3.3'
+version: "3.3"
 
 services:
   adbhoney:
@@ -18,29 +18,29 @@ services:
     restart: always
     read_only: true
     tmpfs:
-     - /tmp/ciscoasa:uid=2000,gid=2000
+      - /tmp/ciscoasa:uid=2000,gid=2000
     ports:
-     - "5000:5000/udp"
-     - "8443:8443"
+      - "5000:5000/udp"
+      - "8443:8443"
     volumes:
-     - ./data/ciscoasa/log:/var/log/ciscoasa
+      - ./data/ciscoasa/log:/var/log/ciscoasa
 
   cowrie:
-    build: honeypots/cowrie/.
+    build: honeypots/cowrie/cowrie.
     container_name: vikrant-cowrie
     restart: always
     read_only: true
     tmpfs:
-     - /tmp/cowrie:uid=2000,gid=2000
-     - /tmp/cowrie/data:uid=2000,gid=2000
+      - /tmp/cowrie:uid=2000,gid=2000
+      - /tmp/cowrie/data:uid=2000,gid=2000
     ports:
-     - "150:22"
-     - "151:23"
-    volumes:
-     - ./data/cowrie/downloads:/home/cowrie/cowrie/dl
-     - ./data/cowrie/keys:/home/cowrie/cowrie/etc
-     - ./data/cowrie/log:/home/cowrie/cowrie/log
-     - ./data/cowrie/log/tty:/home/cowrie/cowrie/log/tty
+      - "150:2222"
+      - "151:2223"
+    # volumes:
+    #  - ./data/cowrie/downloads:/home/cowrie/cowrie/dl
+    #  - ./data/cowrie/keys:/home/cowrie/cowrie/etc
+    #  - ./data/cowrie/log:/home/cowrie/cowrie/log
+    #  - ./data/cowrie/log/tty:/home/cowrie/cowrie/log/tty
 
   ddospot:
     build: honeypots/ddospot/.
@@ -55,39 +55,39 @@ services:
     volumes:
       - ./data/ddospot:/root/ddospot/db
 
-#   dionaea:
-#     build: honeypots/dionaea/.
-#     container_name: vikrant-dionaea
-#     stdin_open: true
-#     tty: true
-#     restart: always
-#     ports:
-#      - "20:20"
-#      - "21:21"
-#      - "42:42"
-#      - "69:69/udp"
-#      - "81:81"
-#      - "135:135"
-#  #    - "443:443"
-#      - "445:445"
-#      - "1433:1433"
-#      - "1723:1723"
-#      - "1883:1883"
-#      - "3306:3306"
-#      - "5060:5060"
-#      - "5060:5060/udp"
-#      - "5061:5061"
-#      - "27017:27017"
-#     read_only: true
-#     volumes:
-#      - ./data/dionaea/roots/ftp:/opt/dionaea/var/dionaea/roots/ftp
-#      - ./data/dionaea/roots/tftp:/opt/dionaea/var/dionaea/roots/tftp
-#      - ./data/dionaea/roots/www:/opt/dionaea/var/dionaea/roots/www
-#      - ./data/dionaea/roots/upnp:/opt/dionaea/var/dionaea/roots/upnp
-#      - ./data/dionaea:/opt/dionaea/var/dionaea
-#      - ./data/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
-#      - ./data/dionaea/log:/opt/dionaea/var/log
-#      - ./data/dionaea/rtp:/opt/dionaea/var/dionaea/rtp
+  #   dionaea:
+  #     build: honeypots/dionaea/.
+  #     container_name: vikrant-dionaea
+  #     stdin_open: true
+  #     tty: true
+  #     restart: always
+  #     ports:
+  #      - "20:20"
+  #      - "21:21"
+  #      - "42:42"
+  #      - "69:69/udp"
+  #      - "81:81"
+  #      - "135:135"
+  #  #    - "443:443"
+  #      - "445:445"
+  #      - "1433:1433"
+  #      - "1723:1723"
+  #      - "1883:1883"
+  #      - "3306:3306"
+  #      - "5060:5060"
+  #      - "5060:5060/udp"
+  #      - "5061:5061"
+  #      - "27017:27017"
+  #     read_only: true
+  #     volumes:
+  #      - ./data/dionaea/roots/ftp:/opt/dionaea/var/dionaea/roots/ftp
+  #      - ./data/dionaea/roots/tftp:/opt/dionaea/var/dionaea/roots/tftp
+  #      - ./data/dionaea/roots/www:/opt/dionaea/var/dionaea/roots/www
+  #      - ./data/dionaea/roots/upnp:/opt/dionaea/var/dionaea/roots/upnp
+  #      - ./data/dionaea:/opt/dionaea/var/dionaea
+  #      - ./data/dionaea/binaries:/opt/dionaea/var/dionaea/binaries
+  #      - ./data/dionaea/log:/opt/dionaea/var/log
+  #      - ./data/dionaea/rtp:/opt/dionaea/var/dionaea/rtp
 
   elasticpot:
     build: honeypots/elasticpot/.
@@ -104,14 +104,14 @@ services:
     container_name: vikrant-honeytrap
     restart: always
     tmpfs:
-     - /tmp/honeytrap:uid=2000,gid=2000
+      - /tmp/honeytrap:uid=2000,gid=2000
     network_mode: "host"
     cap_add:
-     - NET_ADMIN
+      - NET_ADMIN
     volumes:
-     - ./data/honeytrap/attacks:/opt/honeytrap/var/attacks
-     - ../../data/honeytrap/downloads:/opt/honeytrap/var/downloads
-     - ../../data/honeytrap/log:/opt/honeytrap/var/log
+      - ./data/honeytrap/attacks:/opt/honeytrap/var/attacks
+      - ../../data/honeytrap/downloads:/opt/honeytrap/var/downloads
+      - ../../data/honeytrap/log:/opt/honeytrap/var/log
 
   log4pot:
     build: honeypots/log4pot/.
@@ -119,63 +119,63 @@ services:
     restart: always
     read_only: true
     tmpfs:
-     - /tmp:uid=2000,gid=2000
+      - /tmp:uid=2000,gid=2000
     ports:
-     - "80:8080"
-     - "443:8080"
-     - "8080:8080"
-#     - "9200:8080"
-     - "25565:8080"
+      - "80:8080"
+      - "443:8080"
+      - "8080:8080"
+      #     - "9200:8080"
+      - "25565:8080"
     volumes:
-     - ./data/log4pot/log:/var/log/log4pot/log
-     - ./data/log4pot/payloads:/var/log/log4pot/payloads
+      - ./data/log4pot/log:/var/log/log4pot/log
+      - ./data/log4pot/payloads:/var/log/log4pot/payloads
 
   mailoney:
     build: honeypots/mailoney/.
     container_name: vikrant-mailoney
     restart: always
     environment:
-     - HPFEEDS_SERVER=
-     - HPFEEDS_IDENT=user
-     - HPFEEDS_SECRET=pass
-     - HPFEEDS_PORT=20000
-     - HPFEEDS_CHANNELPREFIX=prefix
+      - HPFEEDS_SERVER=
+      - HPFEEDS_IDENT=user
+      - HPFEEDS_SECRET=pass
+      - HPFEEDS_PORT=20000
+      - HPFEEDS_CHANNELPREFIX=prefix
     ports:
-     - "25:25"
+      - "25:25"
     read_only: true
     volumes:
-     - ./data/mailoney/log:/opt/mailoney/logs
+      - ./data/mailoney/log:/opt/mailoney/logs
 
   medpot:
     build: honeypots/medpot/.
     container_name: vikrant-medpot
     restart: always
     ports:
-     - "2575:2575"
+      - "2575:2575"
     read_only: true
     volumes:
-     - ./data/medpot/log/:/var/log/medpot
+      - ./data/medpot/log/:/var/log/medpot
 
   redishoneypot:
     build: honeypots/redishoneypot/.
     container_name: vikrant-redishoneypot
     restart: always
     ports:
-     - "6379:6379"   
+      - "6379:6379"
     read_only: true
     volumes:
-     - ./data/redishoneypot/log:/var/log/redishoneypot
+      - ./data/redishoneypot/log:/var/log/redishoneypot
 
   suricata:
     build: ids/suricata/.
     container_name: vikrant-suricata
     restart: always
     environment:
-     - OINKCODE=OPEN
+      - OINKCODE=OPEN
     network_mode: "host"
     cap_add:
-     - NET_ADMIN
-     - SYS_NICE
-     - NET_RAW
+      - NET_ADMIN
+      - SYS_NICE
+      - NET_RAW
     volumes:
-     - ./data/suricata/log:/var/log/suricata
+      - ./data/suricata/log:/var/log/suricata
