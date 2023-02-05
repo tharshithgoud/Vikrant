@@ -1,0 +1,12 @@
+version: '3.3'
+
+services:
+  medpot:
+    build: .
+    container_name: medpot
+    restart: always
+    ports:
+     - "2575:2575"
+    read_only: true
+    volumes:
+     - ../../data/medpot/log/:/var/log/medpot

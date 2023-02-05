@@ -100,7 +100,7 @@ services:
       - ./data/elasticpot/log:/opt/elasticpot/log
 
   honeytrap:
-    build: .
+    build: honeypots/honeytrap/.
     container_name: vikrant-honeytrap
     restart: always
     tmpfs:
@@ -145,6 +145,16 @@ services:
     read_only: true
     volumes:
      - ./data/mailoney/log:/opt/mailoney/logs
+
+  medpot:
+    build: honeypots/medpot/.
+    container_name: vikrant-medpot
+    restart: always
+    ports:
+     - "2575:2575"
+    read_only: true
+    volumes:
+     - ./data/medpot/log/:/var/log/medpot
 
   redishoneypot:
     build: honeypots/redishoneypot/.
