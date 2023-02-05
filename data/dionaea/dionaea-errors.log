@@ -1,0 +1,2 @@
+[04022023 22:38:07] sip /opt/dionaea/lib/dionaea/python/dionaea/sip/__init__.py:78-warning: Starting cleanup loop
+[04022023 22:38:36] log /root/dionaea/src/signals.c:30-warning: sigint_cb loop 0xffff9630e6a8 w 0xaaaaf0faa190 revents 1024

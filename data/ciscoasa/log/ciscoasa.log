@@ -1,0 +1,11 @@
+Starting server on port 5000/udp
+Using selector: EpollSelector
+/tmp/ciscoasa/asa_server.py:293: DeprecationWarning: ssl.wrap_socket() is deprecated, use SSLContext.wrap_socket()
+  httpd.socket = ssl.wrap_socket(httpd.socket, certfile=cert, server_side=True)
+Starting server on port 8443/tcp, use <Ctrl-C> to stop
+Starting server on port 5000/udp
+Using selector: EpollSelector
+/tmp/ciscoasa/asa_server.py:293: DeprecationWarning: ssl.wrap_socket() is deprecated, use SSLContext.wrap_socket()
+  httpd.socket = ssl.wrap_socket(httpd.socket, certfile=cert, server_side=True)
+Starting server on port 8443/tcp, use <Ctrl-C> to stop
+Stopping server.
