@@ -24,7 +24,7 @@ cleanup() {
 	IFS="$OIFS"
 
     echo "=== Clean stuff up"
-    rm -f "$output_dir"/*.pcap
+    # rm -f "$output_dir"/*.pcap
 
 	echo 
     exit 0
